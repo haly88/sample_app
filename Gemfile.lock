@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ZenTest (4.10.0)
     actionmailer (4.1.1)
       actionpack (= 4.1.1)
       actionview (= 4.1.1)
@@ -28,6 +29,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    autotest-rails (4.2.1)
+      ZenTest (~> 4.5)
     builder (3.2.2)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -152,6 +155,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest-rails
   capybara
   coffee-rails
   jbuilder
