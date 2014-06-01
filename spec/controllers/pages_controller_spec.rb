@@ -3,6 +3,10 @@ require 'spec_helper'
 describe PagesController do
   render_views
 
+  before(:each) do
+    @base_title = "Ruby on Rails Tutorial Sample App"
+  end
+
   describe "GET 'home'" do
     it "returns http success" do
       get 'home'
@@ -11,7 +15,7 @@ describe PagesController do
 
     it "should have the right title" do
       visit '/pages/home'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Home")
+      expect(page).to have_title("#{@base_title} | Home")
     end
     
     it "should have a non-black body" do
@@ -28,7 +32,7 @@ describe PagesController do
     
     it "should have the right title" do
       visit '/pages/contact'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Contact")
+      expect(page).to have_title("#{@base_title} | Contact")
     end
   end
   
@@ -40,7 +44,7 @@ describe PagesController do
     
     it "should have the right title" do
       visit '/pages/about'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | About")
+      expect(page).to have_title("#{@base_title} | About")
     end
   end
 end
