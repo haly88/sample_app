@@ -14,8 +14,13 @@ describe PagesController do
     end
 
     it "should have the right title" do
-      visit '/pages/home'
+      visit root_path
       expect(page).to have_title("#{@base_title} | Home")
+    end
+
+    it "should have the content 'Home'" do
+      visit root_path
+      expect(page).to have_content('Home')
     end
     
     it "should have a non-black body" do
@@ -31,8 +36,13 @@ describe PagesController do
     end
     
     it "should have the right title" do
-      visit '/pages/contact'
+      visit contact_path
       expect(page).to have_title("#{@base_title} | Contact")
+    end
+
+    it "should have the content 'Contact'" do
+      visit contact_path
+      expect(page).to have_content('Contact')
     end
   end
   
@@ -43,8 +53,30 @@ describe PagesController do
     end
     
     it "should have the right title" do
-      visit '/pages/about'
+      visit about_path
       expect(page).to have_title("#{@base_title} | About")
+    end
+
+    it "should have the content 'About'" do
+      visit about_path
+      expect(page).to have_content('About')
+    end
+  end
+
+    describe "GET 'help'" do
+    it "returns http success" do
+      get 'help'
+      response.should be_success
+    end
+    
+    it "should have the right title" do
+      visit help_path
+      expect(page).to have_title("#{@base_title} | Help")
+    end
+
+    it "should have the content 'Help'" do
+      visit help_path
+      expect(page).to have_content('Help')
     end
   end
 end
