@@ -9,17 +9,26 @@ describe PagesController do
 
   describe "GET 'home'" do
     it "returns http success" do
-      get 'home'
+      visit root_path
       response.should be_success
     end
 
-    it "should have the right title" do
+    it "should have the right title and links" do
       visit root_path
       expect(page).to have_title("#{@base_title} | Home")
+      click_link "About"
+      expect(page).to have_title('About')
+      click_link "Contact"
+      expect(page).to have_title('Contact')
+      click_link "Home"
+      expect(page).to have_title('Home')
+      click_link "Sign up now!"
+      expect(page).to have_title('Sign up')
+      expect(page).to have_selector('a[href="/"]>img')
     end
 
-    it "should have the content 'Home'" do
-      visit root_path
+    it "should have a Home page at '/'" do
+      visit '/'
       expect(page).to have_content('Home')
     end
     
@@ -31,7 +40,7 @@ describe PagesController do
   
   describe "GET 'contact'" do
     it "returns http success" do
-      get 'contact'
+      visit contact_path
       response.should be_success
     end
     
@@ -40,15 +49,15 @@ describe PagesController do
       expect(page).to have_title("#{@base_title} | Contact")
     end
 
-    it "should have the content 'Contact'" do
-      visit contact_path
+    it "should have a Contact page at '/contact'" do
+      visit '/contact'
       expect(page).to have_content('Contact')
     end
   end
   
   describe "GET 'about'" do
     it "returns http success" do
-      get 'about'
+      visit about_path
       response.should be_success
     end
     
@@ -57,15 +66,15 @@ describe PagesController do
       expect(page).to have_title("#{@base_title} | About")
     end
 
-    it "should have the content 'About'" do
-      visit about_path
+    it "should have a About page at '/about'" do
+      visit '/about'
       expect(page).to have_content('About')
     end
   end
 
     describe "GET 'help'" do
     it "returns http success" do
-      get 'help'
+      visit help_path
       response.should be_success
     end
     
@@ -74,8 +83,8 @@ describe PagesController do
       expect(page).to have_title("#{@base_title} | Help")
     end
 
-    it "should have the content 'Help'" do
-      visit help_path
+    it "should have a Help page at '/help'" do
+      visit '/help'
       expect(page).to have_content('Help')
     end
   end
