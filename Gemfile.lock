@@ -28,6 +28,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    annotate (2.6.3)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
     autotest-rails (4.2.1)
       ZenTest (~> 4.5)
@@ -155,6 +158,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   autotest-rails
   capybara
   coffee-rails

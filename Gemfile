@@ -8,6 +8,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'autotest-rails'
+  gem 'annotate'
 end
 
 group :test do
