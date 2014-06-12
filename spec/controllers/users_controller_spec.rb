@@ -33,6 +33,11 @@ describe UsersController do
       visit user_path(@user)
       expect(page).to have_selector('h1>img', visible: "gravatar")
     end
+
+    it "should have the right URL" do
+      visit user_path(@user)
+      expect(page).to have_selector('td>a', text: user_path(@user))
+    end
   end
 
   describe "GET 'new'" do
