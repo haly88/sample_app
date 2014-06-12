@@ -23,6 +23,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'gravatar_image_tag'
 
 group :doc do
   gem 'sdoc', require: false
