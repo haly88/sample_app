@@ -22,6 +22,10 @@ module SessionsHelper
 		current_user = nil
 	end
 
+	def deny_access
+    	redirect_to signin_path, notice: "Plese sign in to acces this page."
+  	end
+
 	private
 
 	def user_from_remember_token
