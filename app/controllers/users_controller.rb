@@ -18,8 +18,21 @@ class UsersController < ApplicationController
         redirect_to @user, flash: {success: "Welcome to the Sample App!"}
       else
   	   @title = "Sign up"
-  	   render "new"
+  	   render :new
      end
+  end
+
+  def edit
+    @title = "Edit user"
+  end
+
+  def update
+    if @user.update_attributes(user_params)
+      redirect_to @user, flash: {success: "Profile updated."}
+    else
+      @title = "Edit user"
+      render :edit
+    end
   end
 
   private
