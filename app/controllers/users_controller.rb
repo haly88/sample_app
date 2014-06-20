@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :correct_user]
   before_filter :authenticate, only: [:edit, :update]
+  before_filter :correct_user, only: [:edit, :update]
+
 	def show
   	@title = @user.name
   end
@@ -48,5 +50,9 @@ class UsersController < ApplicationController
 
   def authenticate
     deny_access unless signed_in?
+  end
+
+  def correct_user
+    redirect_to root_path unless current_user?(@user)
   end
 end
