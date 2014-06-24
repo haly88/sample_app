@@ -9,6 +9,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'autotest-rails'
   gem 'annotate'
+  gem 'faker'
 end
 
 group :test do
@@ -24,6 +25,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'gravatar_image_tag'
+gem 'will_paginate'
 
 group :doc do
   gem 'sdoc', require: false

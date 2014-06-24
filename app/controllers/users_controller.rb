@@ -1,10 +1,16 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :correct_user]
-  before_filter :authenticate, only: [:edit, :update]
-  before_filter :correct_user, only: [:edit, :update]
+  before_action :set_user,      only: [:show, :edit, :update, :destroy, :correct_user]
+  before_filter :authenticate,  only: [:index, :edit, :update]
+  before_filter :correct_user,  only: [:edit, :update]
+  before_filter :admin_user,    only: :destroy
 
-	def show
+	def index
+    @users = User.paginate( page: params[:page])
+    @title = "All users"
+  end
+
+  def show
   	@title = @user.name
   end
   
@@ -37,6 +43,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to users_path, flash: {success: "User destroyed"}
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
@@ -54,5 +65,9 @@ class UsersController < ApplicationController
 
   def correct_user
     redirect_to root_path unless current_user?(@user)
+  end
+
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
   end
 end
