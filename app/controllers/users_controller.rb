@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @microposts = @user.microposts
   	@title = @user.name
   end
   
