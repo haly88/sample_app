@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @microposts = @user.microposts
+    @microposts = @user.microposts.paginate(page: params[:page])
   	@title = @user.name
   end
   
@@ -58,10 +58,6 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def authenticate
-    deny_access unless signed_in?
   end
 
   def correct_user
